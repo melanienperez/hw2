@@ -2,6 +2,7 @@
 #include "util.h"
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 using namespace std;
 
 Movie::Movie(const std::string category, const std::string name, double price, int qty, std::string genre, std::string rating)

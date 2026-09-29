@@ -2,6 +2,7 @@
 #include "util.h"
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 using namespace std;
 Clothing::Clothing(const std::string category, const std::string name, double price, int qty, std::string size, std::string brand)
     : Product(category, name, price, qty), size_(size), brand_(brand)
