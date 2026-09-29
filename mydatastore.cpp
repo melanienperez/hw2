@@ -32,6 +32,11 @@ void MyDataStore::addUser(User* u) {
 }
 
 void MyDataStore::addToCart(std::string username, Product* p) {
+    if (carts_.find(username) == carts_.end()) {
+        std::cout << "Invalid request" << std::endl;
+        return;
+    }
+
     if(p->getQty() > 0) {
         carts_[username].push_back(p);
     }
