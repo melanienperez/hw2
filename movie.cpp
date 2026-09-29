@@ -13,7 +13,7 @@ Movie::Movie(const std::string category, const std::string name, double price, i
 std::set<std::string> Movie::keywords() const
 {
     std::set<std::string> keywordsSet = parseStringToWords(name_);//adding all keywords from name_ to keywordsSet
-       keywordsSet.insert(genre_);//adding genre_ to keywordsSet
+    keywordsSet.insert(genre_);//adding genre_ to keywordsSet
     return keywordsSet;
 }
 

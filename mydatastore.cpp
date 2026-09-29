@@ -21,7 +21,7 @@ void MyDataStore::addProduct(Product* p) {
     std::set<std::string> productKeywords = p->keywords();
     std::set<std::string>::iterator it = productKeywords.begin();
     for(; it != productKeywords.end(); it++) {
-        keywords_[*it].insert(p);
+        keywords_[convToLower(*it)].insert(p);
     }
 }
 void MyDataStore::addUser(User* u) {
