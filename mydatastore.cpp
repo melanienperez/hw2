@@ -44,6 +44,10 @@ void MyDataStore::addToCart(std::string username, Product* p) {
 }
 
 void MyDataStore::viewCart(std::string username) {
+    if (carts_.find(username) == carts_.end()) {
+        std::cout << "Invalid username" << std::endl;
+        return;
+    }
     std::vector<Product*>& cart = carts_[username];
 
     int resultNo = 1;
@@ -57,6 +61,10 @@ void MyDataStore::viewCart(std::string username) {
 }
 
 void MyDataStore::buyCart(std::string username) {
+    if (carts_.find(username) == carts_.end()) {
+        std::cout << "Invalid username" << std::endl;
+        return;
+    }
     std::vector<Product*>& cart = carts_[username];
      User* user = nullptr;
 
@@ -69,16 +77,17 @@ void MyDataStore::buyCart(std::string username) {
      }
 
      std::vector<Product*>::iterator itP = cart.begin();
-        for(; itP != cart.end(); itP++){
-
+        while (itP != cart.end()) {
             Product* p = *itP;
             if(p->getQty() > 0 && user->getBalance() >= p->getPrice()){
                 user->deductAmount(p->getPrice());
                 p->subtractQty(1);
+                itP = cart.erase(itP);
+            } else {
+                itP++;
             }
-     }
-     cart.clear();
  
+}
 }
 
 std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int type) {
