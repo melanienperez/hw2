@@ -1,4 +1,6 @@
 #include "mydatastore.h"
+#include <iostream>
+#include <iomanip>
 
 
 MyDataStore::MyDataStore() {
@@ -38,9 +40,14 @@ void MyDataStore::addToCart(std::string username, Product* p) {
 
 void MyDataStore::viewCart(std::string username) {
     std::vector<Product*>& cart = carts_[username];
+
+    int resultNo = 1;
     std::vector<Product*>::iterator it = cart.begin();
     for(; it != cart.end(); it++){
+        std::cout << "Hit " << std::setw(3) << resultNo << std::endl;
         std::cout << (*it)->displayString() << std::endl;
+        std::cout << std::endl;
+        resultNo++;
     }
 }
 
