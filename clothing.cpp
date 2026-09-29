@@ -18,8 +18,12 @@ std::set<std::string> Clothing::keywords() const
 
 std::string Clothing::displayString() const
 {
-    std::string displayString = name_ + "\nSize: " + size_ + " Brand: " + brand_ + "\n" + to_string(price_) + " " + to_string(qty_) + " left.";
-    return displayString;
+    std::stringstream ss;
+    
+    ss<< name_ << "\n"
+    << "Size: " << size_ << " Brand: " << brand_ << "\n"
+    <<fixed << setprecision(2) << price_ << " " << qty_ << " left.";
+    return ss.str();
 }
 
 void Clothing::dump(std::ostream& os) const{

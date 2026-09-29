@@ -2,7 +2,9 @@
 #include "util.h"
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 using namespace std;
+
 
 Book::Book(const std::string category, const std::string name, double price, int qty, std::string isbn, std::string author)
     : Product(category, name, price, qty), isbn_(isbn), author_(author)
@@ -21,8 +23,12 @@ std::set<std::string> Book::keywords() const
 
 std::string Book::displayString() const
 {
-    std::string displayString = name_ + "\nAuthor: " + author_ + " ISBN: " + isbn_ + "\n" + to_string(price_) + " " + to_string(qty_) + " left.";
-    return displayString;
+    std::stringstream ss;
+    
+    ss<< name_ << "\n"
+    << "Author: " << author_ << " ISBN: " << isbn_ << "\n"
+    <<fixed << setprecision(2) << price_ << " " << qty_ << " left.";
+    return ss.str();
 }
 
 void Book::dump(std::ostream& os) const{

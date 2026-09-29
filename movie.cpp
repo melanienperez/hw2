@@ -19,8 +19,12 @@ std::set<std::string> Movie::keywords() const
 
 std::string Movie::displayString() const
 {
-    std::string displayString = name_ + "\nGenre: " + genre_ + " Rating: " + rating_ + "\n" + to_string(price_) + " " + to_string(qty_) + " left.";
-    return displayString;
+    std::stringstream ss;
+    
+    ss<< name_ << "\n"
+    << "Genre: " << genre_ << " Rating: " << rating_ << "\n"
+    <<fixed << setprecision(2) << price_ << " " << qty_ << " left.";
+    return ss.str();
 }
 
 void Movie::dump(std::ostream& os) const{
