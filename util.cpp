@@ -18,7 +18,7 @@ std::set<std::string> parseStringToWords(string rawWords)
     int n = rawWords.size();
     std::set<std::string> keywords;//set with all keyboards from rawWords string
     string word = "";
-    for(int i = 0; i < n; i ++){
+    for(int i = 0; i < n; i++){
         if(!(isspace(rawWords[i]) || ispunct(rawWords[i]))){
             word = word + rawWords[i];
         } else {
@@ -27,6 +27,10 @@ std::set<std::string> parseStringToWords(string rawWords)
                 //case-sesitvive so have to convert to lower case before adding to set
             }
             word = "";//resetting word to empty string
+        }
+        if(word.size() >= 2){
+            keywords.insert(convToLower(word));//adding word to set if it is 2 or more characters long
+            //case-sesitvive so have to convert to lower case before adding to set
         }
     } 
     return keywords;//set with all keyboards from rawWords string
