@@ -108,7 +108,7 @@ int main(int argc, char* argv[])
                 ss >> username;
                 ss >> hitNum;
 
-                if (hitNum < 1 || hitNum > hits.size()){
+                if (hitNum < 1 || hitNum > int(hits.size())){
                     cout << "Invalid request" << endl;
                 } else {
                     ds.addToCart(username, hits[hitNum - 1]);
